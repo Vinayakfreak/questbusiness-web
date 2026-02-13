@@ -15,73 +15,83 @@ export default function Home() {
           <div className={styles.badge}>questbusiness.in</div>
         </header>
 
+        {/* Welcome / Landing screen */}
         <section className={styles.hero}>
-          {/* 3D background placeholder (Spline embed) */}
           <div className={styles.canvas} aria-hidden>
             <iframe
               title="3D"
-              // Replace this with your Spline scene URL later.
+              // Replace this with your real 3D scene URL (Spline) when ready.
               src="https://my.spline.design/placeholder"
               loading="lazy"
             />
           </div>
 
           <div className={styles.heroInner}>
-            <h1 className={styles.h1}>
-              All-in-one platform for small sellers.
-            </h1>
+            <h1 className={styles.h1}>Welcome to {BRAND}.</h1>
             <p className={styles.sub}>
-              Create a store page, list products, take orders on WhatsApp/UPI, and grow with honest guidance.
-              Built for entrepreneurs who want to start with low investment.
+              We’re building an all‑in‑one platform (A + B):
+              <br />
+              <b>A)</b> Help small sellers go online and grow.
+              <br />
+              <b>B)</b> Teach the roadmap to build websites, use AI, and learn business.
             </p>
 
             <div className={styles.ctas}>
               <Link className={styles.btnPrimary} href="/onboard">
-                Create your store
+                Create website
+              </Link>
+              <Link className={styles.btnSecondary} href="/about">
+                Learn more
               </Link>
               <Link className={styles.btnSecondary} href="/s/demo">
-                View demo seller page
+                Demo seller page
               </Link>
             </div>
 
+            {/* Sequential parts (cards) */}
             <div className={styles.grid}>
               <div className={styles.card}>
-                <h3>Fast Setup</h3>
-                <p>Simple seller page like a marketplace product page.</p>
+                <h3>Track A</h3>
+                <p>Seller storefront + WhatsApp orders + UPI.</p>
               </div>
               <div className={styles.card}>
-                <h3>Low Investment</h3>
-                <p>Start with WhatsApp orders + UPI, upgrade later.</p>
+                <h3>Track B</h3>
+                <p>7‑day build from scratch + AI workflows.</p>
               </div>
               <div className={styles.card}>
-                <h3>Honest Coach</h3>
-                <p>We tell you what to fix, not fake motivation.</p>
+                <h3>Reality + Growth</h3>
+                <p>Honest guidance—what to fix and what to do next.</p>
               </div>
             </div>
 
+            {/* About & projects + upcoming */}
             <div className={styles.section}>
               <div className={styles.list}>
-                <h2>What you can do (Phase 1)</h2>
+                <h2>The idea (learning roadmap)</h2>
                 <ul className={styles.ul}>
-                  <li>Create your seller store page</li>
-                  <li>Add products with photos and prices</li>
-                  <li>Take orders via WhatsApp</li>
-                  <li>Accept UPI payments (link/QR)</li>
+                  <li>7 days: build a website from scratch</li>
+                  <li>Proper detailed explanation while making the website</li>
+                  <li>Make AI work for you</li>
+                  <li>Make money online</li>
+                  <li>Work 2 hours daily & learn AI + web development</li>
+                  <li>Learn business from scratch</li>
+                  <li>Learn digital marketing</li>
+                  <li>Learn about stock</li>
                 </ul>
               </div>
               <div className={styles.list}>
-                <h2>Coming next</h2>
+                <h2>About us & upcoming</h2>
                 <ul className={styles.ul}>
+                  <li>Seller onboarding form</li>
+                  <li>Real product upload + catalog</li>
                   <li>Seller dashboard + order tracking</li>
-                  <li>Customer list + follow-ups</li>
-                  <li>Templates for Instagram & WhatsApp</li>
                   <li>AI weekly growth report</li>
                 </ul>
               </div>
             </div>
 
             <footer className={styles.footer}>
-              © {new Date().getFullYear()} {BRAND}. Build the small, grow the big.
+              © {new Date().getFullYear()} {BRAND}.
             </footer>
           </div>
         </section>
