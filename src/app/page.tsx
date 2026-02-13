@@ -43,6 +43,9 @@ export default function Home() {
               <Link className={styles.btnSecondary} href="/about">
                 Learn more
               </Link>
+              <Link className={styles.btnSecondary} href="/pricing">
+                Pricing
+              </Link>
               <Link className={styles.btnSecondary} href="/s/demo">
                 Demo seller page
               </Link>
