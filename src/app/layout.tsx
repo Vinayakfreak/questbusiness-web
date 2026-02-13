@@ -12,14 +12,18 @@ export const metadata: Metadata = {
   description: "All-in-one platform for micro-entrepreneurs",
 };
 
+import { ThemeProvider } from "./theme-provider";
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.variable}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={inter.variable}>
+        <ThemeProvider>{children}</ThemeProvider>
+      </body>
     </html>
   );
 }
