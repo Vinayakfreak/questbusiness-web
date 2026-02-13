@@ -51,6 +51,8 @@
   position: absolute;
   inset: 0;
   opacity: 0.9;
+  background: radial-gradient(600px 320px at 30% 40%, rgba(99,102,241,0.28), transparent 60%),
+    radial-gradient(520px 300px at 70% 40%, rgba(16,185,129,0.18), transparent 55%);
 }
 
 .canvas iframe {

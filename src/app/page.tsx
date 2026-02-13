@@ -18,12 +18,12 @@ export default function Home() {
         {/* Welcome / Landing screen */}
         <section className={styles.hero}>
           <div className={styles.canvas} aria-hidden>
-            <iframe
-              title="3D"
-              // Replace this with your real 3D scene URL (Spline) when ready.
-              src="https://my.spline.design/placeholder"
-              loading="lazy"
-            />
+            {/* 3D background: set NEXT_PUBLIC_SPLINE_URL in Vercel env to enable */}
+            {process.env.NEXT_PUBLIC_SPLINE_URL ? (
+              <iframe title="3D" src={process.env.NEXT_PUBLIC_SPLINE_URL} loading="lazy" />
+            ) : (
+              <div style={{ width: "100%", height: "100%" }} />
+            )}
           </div>
 
           <div className={styles.heroInner}>
