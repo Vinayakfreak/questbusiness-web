@@ -1,7 +1,7 @@
 import Link from "next/link";
 import styles from "./page.module.css";
 
-const BRAND = "QuestBudiness";
+const BRAND = "Quest Business";
 
 export default function Home() {
   return (

@@ -13,7 +13,7 @@ export default function OnboardPage() {
 
       <div style={{ marginTop: 16, display: "flex", gap: 10, flexWrap: "wrap" }}>
         <a
-          href="https://wa.me/919999999999?text=Hi%20I%20want%20to%20create%20my%20store%20on%20QuestBusiness"
+          href="https://wa.me/917007474846?text=Hi%20I%20want%20to%20create%20my%20store%20on%20Quest%20Business"
           target="_blank"
           rel="noreferrer"
           style={{

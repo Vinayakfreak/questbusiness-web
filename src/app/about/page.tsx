@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const BRAND = "QuestBudiness";
+const BRAND = "Quest Business";
 
 export default function AboutPage() {
   return (

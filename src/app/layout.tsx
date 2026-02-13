@@ -8,8 +8,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "QuestBudiness",
-  description: "All-in-one platform for micro-entrepreneurs",
+  title: "Quest Business",
+  description: "All-in-one platform for small sellers + learning roadmap",
 };
 
 import { ThemeProvider } from "./theme-provider";
