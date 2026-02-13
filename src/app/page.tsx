@@ -38,7 +38,7 @@ export default function Home() {
 
             <div className={styles.ctas}>
               <Link className={styles.btnPrimary} href="/onboard">
-                Create website
+                Your Business Idea
               </Link>
               <Link className={styles.btnSecondary} href="/about">
                 Learn more
