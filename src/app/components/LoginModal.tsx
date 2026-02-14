@@ -115,14 +115,12 @@ export function LoginModal() {
         </div>
 
         <p style={{ marginTop: 10, opacity: 0.8, lineHeight: 1.6 }}>
-          Email OTP login will be added in Phase 2. For now, use WhatsApp onboarding.
+          Login with Email OTP + Coupon.
         </p>
 
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 12 }}>
           <a
-            href="https://wa.me/917007474846?text=Hi%20Quest%20Business,%20I%20want%20to%20login/onboard"
-            target="_blank"
-            rel="noreferrer"
+            href="/login"
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -130,12 +128,13 @@ export function LoginModal() {
               height: 44,
               padding: "0 16px",
               borderRadius: 999,
-              background: "#25D366",
-              color: "#08110a",
+              background: "var(--fg)",
+              color: "var(--bg)",
               fontWeight: 900,
+              textDecoration: "none",
             }}
           >
-            WhatsApp to onboard
+            Go to login
           </a>
           <button
             onClick={() => {
