@@ -52,9 +52,14 @@ export default function Home() {
             </p>
 
             <div className={styles.ctas}>
-              <Link className={styles.btnPrimary} href="/onboard">
+              <a
+                className={styles.btnPrimary}
+                href="https://quest-business-coach.appy.ai/"
+                target="_blank"
+                rel="noreferrer"
+              >
                 Your Business Idea
-              </Link>
+              </a>
               <Link className={styles.btnSecondary} href="/marketplace">
                 Marketplace
               </Link>
