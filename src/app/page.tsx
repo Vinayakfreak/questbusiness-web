@@ -2,24 +2,35 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import { QBLogo } from "./components/QBLogo";
 import { Starfield } from "./components/Starfield";
+import { LoginModal } from "./components/LoginModal";
+import { FAQ } from "./components/FAQ";
+import { AiSection } from "./components/AiSection";
 
 const BRAND = "Quest Business";
 
 export default function Home() {
   return (
     <div className={styles.page}>
+      <LoginModal />
       <div className={styles.container}>
         <header className={styles.nav}>
           <div className={styles.brand}>
             <QBLogo size={28} />
             <span>{BRAND}</span>
-            <span className={styles.badge}>MVP</span>
           </div>
-          <div className={styles.badge}>questbusiness.in</div>
+          <nav style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "flex-end" }}>
+            <a className={styles.badge} href="#home">Home</a>
+            <a className={styles.badge} href="#marketplace">Marketplace</a>
+            <a className={styles.badge} href="#roadmap">Roadmap</a>
+            <a className={styles.badge} href="#ai">AI</a>
+            <a className={styles.badge} href="#pricing">Pricing</a>
+            <a className={styles.badge} href="#about">About</a>
+            <a className={styles.badge} href="#faq">FAQ</a>
+          </nav>
         </header>
 
-        {/* Welcome / Landing screen */}
-        <section className={styles.hero}>
+        {/* A: Home / Landing */}
+        <section id="home" className={styles.hero}>
           <div className={styles.canvas} aria-hidden>
             <Starfield />
             {/* 3D background: set NEXT_PUBLIC_SPLINE_URL in Vercel env to enable */}
@@ -44,56 +55,85 @@ export default function Home() {
               <Link className={styles.btnPrimary} href="/onboard">
                 Your Business Idea
               </Link>
-              <Link className={styles.btnSecondary} href="/about">
-                Learn more
-              </Link>
-              <Link className={styles.btnSecondary} href="/pricing">
-                Pricing
-              </Link>
-              <Link className={styles.btnSecondary} href="/s/demo">
-                Demo seller page
+              <Link className={styles.btnSecondary} href="/marketplace">
+                Marketplace
               </Link>
             </div>
 
-            {/* Sequential parts (cards) */}
-            <div className={styles.grid}>
-              <div className={styles.card}>
-                <h3>Track A</h3>
-                <p>Seller storefront + WhatsApp orders + UPI.</p>
-              </div>
-              <div className={styles.card}>
-                <h3>Track B</h3>
-                <p>7‑day build from scratch + AI workflows.</p>
-              </div>
-              <div className={styles.card}>
-                <h3>Reality + Growth</h3>
-                <p>Honest guidance—what to fix and what to do next.</p>
+            {/* I: Marketplace preview */}
+            <div id="marketplace" className={styles.sectionFull}>
+              <div className={styles.kicker}>Marketplace</div>
+              <h2 style={{ marginTop: 10, fontSize: 28, letterSpacing: -0.6 }}>Shop small. Buy better.</h2>
+              <p style={{ marginTop: 8, opacity: 0.85, lineHeight: 1.7, maxWidth: 820 }}>
+                Discover sellers, products, and services — and checkout in one place.
+              </p>
+              <div style={{ marginTop: 12 }}>
+                <Link className={styles.btnSecondary} href="/marketplace">
+                  Open marketplace →
+                </Link>
               </div>
             </div>
 
-            {/* About & projects + upcoming */}
-            <div className={styles.section}>
-              <div className={styles.list}>
-                <h2>The idea (learning roadmap)</h2>
-                <ul className={styles.ul}>
-                  <li>7 days: build a website from scratch</li>
-                  <li>Proper detailed explanation while making the website</li>
-                  <li>Make AI work for you</li>
-                  <li>Make money online</li>
-                  <li>Work 2 hours daily & learn AI + web development</li>
-                  <li>Learn business from scratch</li>
-                  <li>Learn digital marketing</li>
-                  <li>Learn about stock</li>
-                </ul>
+            {/* C: Roadmap */}
+            <div id="roadmap" className={styles.sectionFull}>
+              <div className={styles.kicker}>Roadmap</div>
+              <h2 style={{ marginTop: 10, fontSize: 28, letterSpacing: -0.6 }}>Build your brand offline + online.</h2>
+              <p style={{ marginTop: 8, opacity: 0.85, lineHeight: 1.7, maxWidth: 820 }}>
+                Follow the step‑by‑step roadmap: websites, AI workflows, business basics, marketing, and more.
+              </p>
+              <div style={{ marginTop: 12 }}>
+                <Link className={styles.btnSecondary} href="/roadmap">
+                  View roadmap →
+                </Link>
               </div>
-              <div className={styles.list}>
-                <h2>About us & upcoming</h2>
-                <ul className={styles.ul}>
-                  <li>Seller onboarding form</li>
-                  <li>Real product upload + catalog</li>
-                  <li>Seller dashboard + order tracking</li>
-                  <li>AI weekly growth report</li>
-                </ul>
+            </div>
+
+            {/* D: AI Coach with tabs */}
+            <AiSection />
+
+            {/* E: Pricing preview */}
+            <div id="pricing" className={styles.sectionFull}>
+              <div className={styles.kicker}>Pricing</div>
+              <h2 style={{ marginTop: 10, fontSize: 28, letterSpacing: -0.6 }}>Start free. Upgrade when ready.</h2>
+              <p style={{ marginTop: 8, opacity: 0.85, lineHeight: 1.7, maxWidth: 820 }}>
+                Free / Basic / Grow — plus custom setup.
+              </p>
+              <div style={{ marginTop: 12 }}>
+                <Link className={styles.btnSecondary} href="/pricing">
+                  See pricing →
+                </Link>
+              </div>
+            </div>
+
+            {/* B: About */}
+            <div id="about" className={styles.sectionFull}>
+              <div className={styles.kicker}>About</div>
+              <h2 style={{ marginTop: 10, fontSize: 28, letterSpacing: -0.6 }}>Build smarter systems.</h2>
+              <p style={{ marginTop: 8, opacity: 0.85, lineHeight: 1.7, maxWidth: 820 }}>
+                Quest Business helps sellers become brands with daily targets, clear tasks, and honest growth.
+              </p>
+              <div style={{ marginTop: 12 }}>
+                <Link className={styles.btnSecondary} href="/about">
+                  Learn more →
+                </Link>
+              </div>
+            </div>
+
+            {/* G: FAQ */}
+            <div id="faq" className={styles.sectionFull}>
+              <div className={styles.kicker}>FAQ</div>
+              <h2 style={{ marginTop: 10, fontSize: 28, letterSpacing: -0.6 }}>We’ve got the answers.</h2>
+              <FAQ />
+              <div style={{ marginTop: 14 }}>
+                <a
+                  href="https://wa.me/917007474846?text=Hi%20Quest%20Business"
+                  target="_blank"
+                  rel="noreferrer"
+                  className={styles.btnPrimary}
+                  style={{ display: "inline-flex" }}
+                >
+                  WhatsApp us
+                </a>
               </div>
             </div>
 
