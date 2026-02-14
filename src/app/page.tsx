@@ -1,5 +1,7 @@
 import Link from "next/link";
 import styles from "./page.module.css";
+import { QBLogo } from "./components/QBLogo";
+import { Starfield } from "./components/Starfield";
 
 const BRAND = "Quest Business";
 
@@ -9,6 +11,7 @@ export default function Home() {
       <div className={styles.container}>
         <header className={styles.nav}>
           <div className={styles.brand}>
+            <QBLogo size={28} />
             <span>{BRAND}</span>
             <span className={styles.badge}>MVP</span>
           </div>
@@ -18,22 +21,23 @@ export default function Home() {
         {/* Welcome / Landing screen */}
         <section className={styles.hero}>
           <div className={styles.canvas} aria-hidden>
+            <Starfield />
             {/* 3D background: set NEXT_PUBLIC_SPLINE_URL in Vercel env to enable */}
             {process.env.NEXT_PUBLIC_SPLINE_URL ? (
               <iframe title="3D" src={process.env.NEXT_PUBLIC_SPLINE_URL} loading="lazy" />
-            ) : (
-              <div style={{ width: "100%", height: "100%" }} />
-            )}
+            ) : null}
           </div>
+          <div className={styles.heroGlow} aria-hidden />
 
           <div className={styles.heroInner}>
-            <h1 className={styles.h1}>Welcome to {BRAND}.</h1>
+            <div className={styles.badge} style={{ width: "fit-content" }}>
+              AI + Marketplace + Learning
+            </div>
+            <h1 className={styles.h1} style={{ marginTop: 10 }}>
+              {BRAND}
+            </h1>
             <p className={styles.sub}>
-              We’re building an all‑in‑one platform (A + B):
-              <br />
-              <b>A)</b> Help small sellers go online and grow.
-              <br />
-              <b>B)</b> Teach the roadmap to build websites, use AI, and learn business.
+              Make your blueprint idea come to reality and become different from other marketplace people.
             </p>
 
             <div className={styles.ctas}>

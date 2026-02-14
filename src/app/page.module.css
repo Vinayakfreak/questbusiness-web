@@ -40,11 +40,31 @@
   margin-top: 10px;
   border: 1px solid var(--border);
   border-radius: 22px;
-  background: var(--panel);
-  backdrop-filter: blur(8px);
-  padding: 28px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  backdrop-filter: blur(10px);
+  padding: 54px 28px 28px;
   position: relative;
   overflow: hidden;
+}
+
+.heroGlow {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  width: 520px;
+  height: 320px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(closest-side, rgba(168,85,247,0.55), transparent 60%),
+    radial-gradient(closest-side, rgba(59,130,246,0.35), transparent 60%),
+    radial-gradient(closest-side, rgba(34,197,94,0.25), transparent 60%);
+  filter: blur(12px);
+  opacity: 0.75;
+  animation: floatGlow 7s ease-in-out infinite;
+}
+
+@keyframes floatGlow {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -52%) scale(1.05); }
 }
 
 .canvas {
