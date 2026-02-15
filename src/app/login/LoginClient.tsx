@@ -2,23 +2,16 @@
 
 import React, { useMemo, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
+import styles from "./loginClient.module.css";
 
-export default function LoginClient() {
+export default function LoginClient() {  
   if (!supabase) {
     return (
-      <div
-        style={{
-          marginTop: 14,
-          border: "1px solid var(--border)",
-          borderRadius: 18,
-          padding: 16,
-          background: "var(--panel)",
-        }}
-      >
-        <div style={{ fontWeight: 900 }}>Server not configured yet</div>
-        <div style={{ marginTop: 8, opacity: 0.85, lineHeight: 1.7 }}>
+      <div className={styles.box}>
+        <div className={styles.step}>Server not configured yet</div>
+        <div className={styles.help} style={{ opacity: 0.85 }}>
           Missing Supabase environment variables. Add in Vercel:
-          <ul style={{ marginTop: 8, paddingLeft: 18, opacity: 0.9 }}>
+          <ul style={{ marginTop: 8, paddingLeft: 18, opacity: 0.9, lineHeight: 1.9 }}>
             <li>NEXT_PUBLIC_SUPABASE_URL</li>
             <li>NEXT_PUBLIC_SUPABASE_ANON_KEY</li>
             <li>SUPABASE_SERVICE_ROLE_KEY (server only)</li>
@@ -99,34 +92,24 @@ export default function LoginClient() {
   }
 
   return (
-    <div
-      style={{
-        marginTop: 14,
-        border: "1px solid var(--border)",
-        borderRadius: 18,
-        padding: 16,
-        background: "var(--panel)",
-      }}
-    >
-      {msg ? (
-        <div style={{ marginBottom: 10, opacity: 0.9 }}>
-          {msg}
-        </div>
-      ) : null}
+    <div className={styles.box}>
+      <div className={styles.badge}>Email OTP + Coupon</div>
+      {msg ? <div className={styles.msg}>{msg}</div> : null}
 
       {step === "email" ? (
         <>
-          <div style={{ fontWeight: 900 }}>Step 1: Email</div>
+          <div className={styles.step}>Step 1: Email</div>
           <input
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="Enter your email"
-            style={{ width: "100%", marginTop: 10, height: 44, borderRadius: 12, border: "1px solid var(--border)", background: "transparent", color: "var(--fg)", padding: "0 12px" }}
+            className={styles.input}
           />
           <button
             onClick={sendOtp}
             disabled={busy || !email.trim()}
-            style={{ marginTop: 12, height: 44, padding: "0 16px", borderRadius: 999, background: "var(--fg)", color: "var(--bg)", fontWeight: 900, border: 0, cursor: "pointer" }}
+            className={`${styles.btn} ${styles.btnPrimary}`}
+            style={{ marginTop: 12 }}
           >
             {busy ? "Sending…" : "Send OTP"}
           </button>
@@ -135,26 +118,22 @@ export default function LoginClient() {
 
       {step === "otp" ? (
         <>
-          <div style={{ fontWeight: 900 }}>Step 2: OTP</div>
+          <div className={styles.step}>Step 2: OTP</div>
           <input
             value={otp}
             onChange={(e) => setOtp(e.target.value)}
             placeholder="Enter OTP"
-            style={{ width: "100%", marginTop: 10, height: 44, borderRadius: 12, border: "1px solid var(--border)", background: "transparent", color: "var(--fg)", padding: "0 12px" }}
+            className={styles.input}
           />
-          <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 12 }}>
+          <div className={styles.row}>
             <button
               onClick={verifyOtp}
               disabled={busy || !otp.trim()}
-              style={{ height: 44, padding: "0 16px", borderRadius: 999, background: "var(--fg)", color: "var(--bg)", fontWeight: 900, border: 0, cursor: "pointer" }}
+              className={`${styles.btn} ${styles.btnPrimary}`}
             >
               {busy ? "Verifying…" : "Verify OTP"}
             </button>
-            <button
-              onClick={() => setStep("email")}
-              disabled={busy}
-              style={{ height: 44, padding: "0 16px", borderRadius: 999, background: "transparent", color: "var(--fg)", fontWeight: 900, border: "1px solid var(--border)", cursor: "pointer" }}
-            >
+            <button onClick={() => setStep("email")} disabled={busy} className={styles.btn}>
               Change email
             </button>
           </div>
@@ -163,30 +142,28 @@ export default function LoginClient() {
 
       {step === "coupon" ? (
         <>
-          <div style={{ fontWeight: 900 }}>Step 3: Coupon</div>
+          <div className={styles.step}>Step 3: Coupon</div>
           <input
             value={coupon}
             onChange={(e) => setCoupon(e.target.value)}
             placeholder="QB-XXXX-XXXX-XXXX"
-            style={{ width: "100%", marginTop: 10, height: 44, borderRadius: 12, border: "1px solid var(--border)", background: "transparent", color: "var(--fg)", padding: "0 12px", letterSpacing: "0.5px" }}
+            className={styles.input}
+            style={{ letterSpacing: "0.5px" }}
           />
           <button
             onClick={activateCoupon}
             disabled={busy || normalizedCoupon.length < 8}
-            style={{ marginTop: 12, height: 44, padding: "0 16px", borderRadius: 999, background: "var(--fg)", color: "var(--bg)", fontWeight: 900, border: 0, cursor: "pointer" }}
+            className={`${styles.btn} ${styles.btnPrimary}`}
+            style={{ marginTop: 12 }}
           >
             {busy ? "Activating…" : "Activate coupon"}
           </button>
         </>
       ) : null}
 
-      {step === "done" ? (
-        <div style={{ fontWeight: 900 }}>Done. You’re unlocked.</div>
-      ) : null}
+      {step === "done" ? <div className={styles.step}>Done. You’re unlocked.</div> : null}
 
-      <div style={{ marginTop: 12, opacity: 0.7, fontSize: 13, lineHeight: 1.7 }}>
-        If you face issues, WhatsApp: 7007474846
-      </div>
+      <div className={styles.help}>If you face issues, WhatsApp: 7007474846</div>
     </div>
   );
 }

@@ -1,0 +1,11 @@
+.box{border:1px solid var(--border);border-radius:22px;background:rgba(255,255,255,.03);padding:16px}
+.msg{margin-bottom:10px;opacity:.9;line-height:1.7}
+.step{font-weight:900;letter-spacing:-.2px}
+.input{width:100%;margin-top:10px;height:44px;border-radius:12px;border:1px solid var(--border);background:rgba(0,0,0,.18);color:var(--fg);padding:0 12px;outline:none}
+.input:focus{border-color:rgba(59,130,246,.5);box-shadow:0 0 0 4px rgba(59,130,246,.10)}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.btn{height:44px;padding:0 16px;border-radius:999px;border:1px solid var(--border);background:transparent;color:var(--fg);font-weight:900;cursor:pointer}
+.btnPrimary{background:linear-gradient(90deg, rgba(168,85,247,.95), rgba(59,130,246,.95));color:#0b0f19;border-color:transparent}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+.help{margin-top:12px;opacity:.7;font-size:13px;line-height:1.7}
+.badge{display:inline-flex;align-items:center;justify-content:center;padding:6px 10px;border-radius:999px;border:1px solid var(--border);background:rgba(0,0,0,.18);color:var(--muted);font-size:12px}
