@@ -3,10 +3,40 @@ import styles from "./page.module.css";
 import { QBLogo } from "./components/QBLogo";
 import { Starfield } from "./components/Starfield";
 import { LoginModal } from "./components/LoginModal";
-import { FAQ } from "./components/FAQ";
-import { AiSection } from "./components/AiSection";
 
 const BRAND = "Quest Business";
+
+function DashboardMock() {
+  return (
+    <div className={styles.mock} aria-label="Dashboard preview">
+      <div className={styles.mockTop}>
+        <div className={styles.mockPill}>Revenue</div>
+        <div className={styles.mockPill}>Signals</div>
+        <div className={styles.mockPill}>Next actions</div>
+      </div>
+
+      <div className={styles.mockGrid}>
+        <div className={styles.mockCard}>
+          <div className={styles.mockLabel}>Monthly revenue</div>
+          <div className={styles.mockValue}>₹ 2,18,400</div>
+          <div className={styles.spark} aria-hidden />
+        </div>
+
+        <div className={styles.mockCard}>
+          <div className={styles.mockLabel}>AI recommendation</div>
+          <div className={styles.mockText}>
+            Improve conversions by tightening the offer and simplifying the CTA.
+          </div>
+          <div className={styles.mockList}>
+            <div>• Rewrite headline</div>
+            <div>• Add 2 proof points</div>
+            <div>• Reduce checkout friction</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function Home() {
   return (
@@ -18,135 +48,262 @@ export default function Home() {
             <QBLogo size={28} />
             <span>{BRAND}</span>
           </div>
-          <nav style={{ display: "flex", gap: 10, flexWrap: "wrap", justifyContent: "flex-end" }}>
-            <a className={styles.badge} href="#home">Home</a>
-            <a className={styles.badge} href="#marketplace">Marketplace</a>
-            <a className={styles.badge} href="#roadmap">Roadmap</a>
-            <a className={styles.badge} href="#ai">AI</a>
-            <a className={styles.badge} href="#pricing">Pricing</a>
-            <a className={styles.badge} href="#about">About</a>
-            <a className={styles.badge} href="#faq">FAQ</a>
+          <nav className={styles.navLinks}>
+            <a className={styles.navLink} href="#features">
+              Features
+            </a>
+            <a className={styles.navLink} href="#how">
+              How it works
+            </a>
+            <a className={styles.navLink} href="#preview">
+              Preview
+            </a>
+            <a className={styles.navLink} href="#pricing">
+              Pricing
+            </a>
           </nav>
         </header>
 
-        {/* A: Home / Landing */}
+        {/* HERO */}
         <section id="home" className={styles.hero}>
           <div className={styles.canvas} aria-hidden>
             <Starfield />
-            {/* 3D background: set NEXT_PUBLIC_SPLINE_URL in Vercel env to enable */}
-            {process.env.NEXT_PUBLIC_SPLINE_URL ? (
-              <iframe title="3D" src={process.env.NEXT_PUBLIC_SPLINE_URL} loading="lazy" />
-            ) : null}
           </div>
           <div className={styles.heroGlow} aria-hidden />
 
           <div className={styles.heroInner}>
-            <div className={styles.badge} style={{ width: "fit-content" }}>
-              AI + Marketplace + Learning
-            </div>
-            <h1 className={styles.h1} style={{ marginTop: 10 }}>
-              {BRAND}
-            </h1>
-            <p className={styles.sub}>
-              Make your blueprint idea come to reality and become different from other marketplace people.
-            </p>
-
-            <div className={styles.ctas}>
-              <a
-                className={styles.btnPrimary}
-                href="https://quest-business-coach.appy.ai/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Your Business Idea
-              </a>
-              <Link className={styles.btnSecondary} href="/marketplace">
-                Marketplace
-              </Link>
-            </div>
-
-            {/* I: Marketplace preview */}
-            <div id="marketplace" className={styles.sectionFull}>
-              <div className={styles.kicker}>Marketplace</div>
-              <h2 style={{ marginTop: 10, fontSize: 28, letterSpacing: -0.6 }}>Shop small. Buy better.</h2>
-              <p style={{ marginTop: 8, opacity: 0.85, lineHeight: 1.7, maxWidth: 820 }}>
-                Discover sellers, products, and services — and checkout in one place.
+            <div className={styles.fadeIn}>
+              <div className={styles.kicker}>AI Growth Operating System</div>
+              <h1 className={styles.h1}>Structured Growth For Modern Small Brands.</h1>
+              <p className={styles.sub}>
+                Quest Business is an AI-powered growth operating system that tracks performance, analyzes patterns, and
+                improves revenue daily.
               </p>
-              <div style={{ marginTop: 12 }}>
-                <Link className={styles.btnSecondary} href="/marketplace">
-                  Open marketplace →
+
+              <div className={styles.ctas}>
+                <Link className={styles.btnPrimary} href="/login">
+                  Start Free 7-Day Growth Trial
                 </Link>
-              </div>
-            </div>
-
-            {/* C: Roadmap */}
-            <div id="roadmap" className={styles.sectionFull}>
-              <div className={styles.kicker}>Roadmap</div>
-              <h2 style={{ marginTop: 10, fontSize: 28, letterSpacing: -0.6 }}>Build your brand offline + online.</h2>
-              <p style={{ marginTop: 8, opacity: 0.85, lineHeight: 1.7, maxWidth: 820 }}>
-                Follow the step‑by‑step roadmap: websites, AI workflows, business basics, marketing, and more.
-              </p>
-              <div style={{ marginTop: 12 }}>
-                <Link className={styles.btnSecondary} href="/roadmap">
-                  View roadmap →
-                </Link>
-              </div>
-            </div>
-
-            {/* D: AI Coach with tabs */}
-            <AiSection />
-
-            {/* E: Pricing preview */}
-            <div id="pricing" className={styles.sectionFull}>
-              <div className={styles.kicker}>Pricing</div>
-              <h2 style={{ marginTop: 10, fontSize: 28, letterSpacing: -0.6 }}>Start free. Upgrade when ready.</h2>
-              <p style={{ marginTop: 8, opacity: 0.85, lineHeight: 1.7, maxWidth: 820 }}>
-                Free / Basic / Grow — plus custom setup.
-              </p>
-              <div style={{ marginTop: 12 }}>
-                <Link className={styles.btnSecondary} href="/pricing">
-                  See pricing →
-                </Link>
-              </div>
-            </div>
-
-            {/* B: About */}
-            <div id="about" className={styles.sectionFull}>
-              <div className={styles.kicker}>About</div>
-              <h2 style={{ marginTop: 10, fontSize: 28, letterSpacing: -0.6 }}>Build smarter systems.</h2>
-              <p style={{ marginTop: 8, opacity: 0.85, lineHeight: 1.7, maxWidth: 820 }}>
-                Quest Business helps sellers become brands with daily targets, clear tasks, and honest growth.
-              </p>
-              <div style={{ marginTop: 12 }}>
-                <Link className={styles.btnSecondary} href="/about">
-                  Learn more →
-                </Link>
-              </div>
-            </div>
-
-            {/* G: FAQ */}
-            <div id="faq" className={styles.sectionFull}>
-              <div className={styles.kicker}>FAQ</div>
-              <h2 style={{ marginTop: 10, fontSize: 28, letterSpacing: -0.6 }}>We’ve got the answers.</h2>
-              <FAQ />
-              <div style={{ marginTop: 14 }}>
-                <a
-                  href="https://wa.me/917007474846?text=Hi%20Quest%20Business"
-                  target="_blank"
-                  rel="noreferrer"
-                  className={styles.btnPrimary}
-                  style={{ display: "inline-flex" }}
-                >
-                  WhatsApp us
+                <a className={styles.btnSecondary} href="#preview">
+                  View Platform Preview
                 </a>
               </div>
             </div>
 
-            <footer className={styles.footer}>
-              © {new Date().getFullYear()} {BRAND}.
-            </footer>
+            <div className={styles.heroRight}>
+              <div className={styles.fadeInDelay}>
+                <DashboardMock />
+              </div>
+            </div>
           </div>
         </section>
+
+        {/* PROBLEM */}
+        <section className={styles.section} id="problem">
+          <div className={styles.sectionHead}>
+            <h2 className={styles.h2}>Most Small Businesses Operate Without A System.</h2>
+            <p className={styles.p}>
+              Effort is not the issue. Structure is. When performance isn’t tracked and reviewed, growth becomes
+              inconsistent.
+            </p>
+          </div>
+
+          <div className={styles.cards3}>
+            <div className={styles.card}>
+              <div className={styles.cardTitle}>Random Content</div>
+              <div className={styles.cardBody}>Posting without a weekly plan leads to unstable reach and poor conversion.</div>
+            </div>
+            <div className={styles.card}>
+              <div className={styles.cardTitle}>Disconnected Data</div>
+              <div className={styles.cardBody}>Sales, DMs, leads, and traffic live in different places with no clear signal.</div>
+            </div>
+            <div className={styles.card}>
+              <div className={styles.cardTitle}>No Weekly Optimization</div>
+              <div className={styles.cardBody}>Without review, the same mistakes repeat and small improvements don’t compound.</div>
+            </div>
+          </div>
+        </section>
+
+        {/* SOLUTION */}
+        <section className={styles.section} id="features">
+          <div className={styles.sectionSplit}>
+            <div>
+              <div className={styles.kicker}>Solution</div>
+              <h2 className={styles.h2}>An AI Growth Operating System.</h2>
+              <p className={styles.p}>
+                A calm, structured workflow for daily execution and weekly review — built for product sellers and service
+                businesses.
+              </p>
+            </div>
+
+            <div className={styles.featureGrid}>
+              <div className={styles.feature}>
+                <div className={styles.featureTitle}>Daily Performance Tracking</div>
+                <div className={styles.featureBody}>Log key signals in one place. Keep progress measurable.</div>
+              </div>
+              <div className={styles.feature}>
+                <div className={styles.featureTitle}>AI Content & Conversion Intelligence</div>
+                <div className={styles.featureBody}>Turn patterns into clear actions: what to post, what to change, what to keep.</div>
+              </div>
+              <div className={styles.feature}>
+                <div className={styles.featureTitle}>Weekly Strategic Review</div>
+                <div className={styles.featureBody}>Stop / Start / Continue — with recommendations grounded in your history.</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* HOW IT WORKS */}
+        <section className={styles.section} id="how">
+          <div className={styles.sectionHead}>
+            <h2 className={styles.h2}>How It Works</h2>
+            <p className={styles.p}>A lightweight loop designed to compound improvements without noise.</p>
+          </div>
+
+          <div className={styles.steps}>
+            <div className={styles.step}>
+              <div className={styles.stepNum}>01</div>
+              <div className={styles.stepText}>Connect your data</div>
+            </div>
+            <div className={styles.stepLine} aria-hidden />
+            <div className={styles.step}>
+              <div className={styles.stepNum}>02</div>
+              <div className={styles.stepText}>Log daily performance</div>
+            </div>
+            <div className={styles.stepLine} aria-hidden />
+            <div className={styles.step}>
+              <div className={styles.stepNum}>03</div>
+              <div className={styles.stepText}>Receive AI action</div>
+            </div>
+            <div className={styles.stepLine} aria-hidden />
+            <div className={styles.step}>
+              <div className={styles.stepNum}>04</div>
+              <div className={styles.stepText}>Compound structured growth</div>
+            </div>
+          </div>
+        </section>
+
+        {/* DASHBOARD SHOWCASE */}
+        <section className={styles.section} id="preview">
+          <div className={styles.sectionSplit}>
+            <div>
+              <div className={styles.kicker}>Dashboard</div>
+              <h2 className={styles.h2}>Clarity Over Complexity.</h2>
+              <p className={styles.p}>
+                A single view that shows performance, quality signals, and clear next actions.
+              </p>
+            </div>
+            <DashboardMock />
+          </div>
+        </section>
+
+        {/* WEBSITE OPTIMIZATION MODULE */}
+        <section className={styles.section} id="optimization">
+          <div className={styles.sectionHead}>
+            <h2 className={styles.h2}>Turn Visitors Into Buyers.</h2>
+            <p className={styles.p}>
+              Conversion improvements are treated like engineering: measurable, repeatable, and prioritized.
+            </p>
+          </div>
+
+          <div className={styles.bullets}>
+            <div>Headline refinement</div>
+            <div>Offer optimization</div>
+            <div>CTA improvement</div>
+            <div>Pricing psychology</div>
+            <div>Funnel analysis</div>
+          </div>
+        </section>
+
+        {/* WHO IT’S FOR */}
+        <section className={styles.section} id="for">
+          <div className={styles.sectionHead}>
+            <h2 className={styles.h2}>Who It’s For</h2>
+            <p className={styles.p}>Built for teams that want structure without overhead.</p>
+          </div>
+          <div className={styles.cards3}>
+            <div className={styles.card}>
+              <div className={styles.cardTitle}>Instagram-first D2C brands</div>
+              <div className={styles.cardBody}>A system for content, conversion, and daily execution.</div>
+            </div>
+            <div className={styles.card}>
+              <div className={styles.cardTitle}>Founder-led businesses</div>
+              <div className={styles.cardBody}>Clear targets and next actions when time and attention are limited.</div>
+            </div>
+            <div className={styles.card}>
+              <div className={styles.cardTitle}>Early-stage online stores</div>
+              <div className={styles.cardBody}>Identify what works early, then scale with discipline.</div>
+            </div>
+          </div>
+        </section>
+
+        {/* PRICING */}
+        <section className={styles.section} id="pricing">
+          <div className={styles.sectionHead}>
+            <h2 className={styles.h2}>Pricing</h2>
+            <p className={styles.p}>Simple plans. A clear upgrade path.</p>
+          </div>
+
+          <div className={styles.pricing}>
+            <div className={styles.priceCard}>
+              <div className={styles.priceTitle}>Starter</div>
+              <div className={styles.priceValue}>Free</div>
+              <div className={styles.priceNote}>Basic access</div>
+              <Link className={styles.btnSecondary} href="/login">
+                Start
+              </Link>
+            </div>
+
+            <div className={styles.priceCardFeatured}>
+              <div className={styles.priceTitle}>Growth</div>
+              <div className={styles.priceValue}>₹1499 / month</div>
+              <div className={styles.priceNote}>Highlighted plan</div>
+              <Link className={styles.btnPrimary} href="/login">
+                Begin Structured Growth
+              </Link>
+            </div>
+
+            <div className={styles.priceCard}>
+              <div className={styles.priceTitle}>Scale</div>
+              <div className={styles.priceValue}>₹3499 / month</div>
+              <div className={styles.priceNote}>Advanced workflows</div>
+              <Link className={styles.btnSecondary} href="/login">
+                Talk to us
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* FINAL CTA */}
+        <section className={styles.final}>
+          <div className={styles.finalInner}>
+            <h2 className={styles.h2}>Stop Operating Blind. Start Operating With Structure.</h2>
+            <p className={styles.p}>
+              Start with a calm system: track, review, and improve with consistent execution.
+            </p>
+            <div className={styles.ctas}>
+              <Link className={styles.btnPrimary} href="/login">
+                Begin Structured Growth
+              </Link>
+              <a className={styles.btnSecondary} href="#preview">
+                View preview
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* FOOTER */}
+        <footer className={styles.footer}>
+          <div className={styles.footerLinks}>
+            <Link href="/about">About</Link>
+            <a href="#features">Features</a>
+            <a href="#pricing">Pricing</a>
+            <Link href="/">Privacy</Link>
+            <Link href="/">Terms</Link>
+            <a href="mailto:support@questbusiness.in">Contact</a>
+          </div>
+          <div className={styles.footerCopy}>© {new Date().getFullYear()} {BRAND}.</div>
+        </footer>
       </div>
     </div>
   );
