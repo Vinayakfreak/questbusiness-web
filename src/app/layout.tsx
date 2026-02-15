@@ -13,6 +13,7 @@ export const metadata: Metadata = {
 };
 
 import { ThemeProvider } from "./theme-provider";
+import { SiteFooter } from "./components/SiteFooter";
 
 export default function RootLayout({
   children,
@@ -22,7 +23,10 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.variable}>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          {children}
+          <SiteFooter />
+        </ThemeProvider>
       </body>
     </html>
   );

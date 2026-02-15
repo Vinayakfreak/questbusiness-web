@@ -406,19 +406,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* FOOTER */}
-        <footer className={styles.footer}>
-          <div className={styles.footerLinks}>
-            <Link href="/about">About</Link>
-            <Link href="/use-cases">Use cases</Link>
-            <Link href="/blog">Blog</Link>
-            <a href="#pricing">Pricing</a>
-            <Link href="/privacy">Privacy</Link>
-            <Link href="/terms">Terms</Link>
-            <Link href="/contact">Contact</Link>
-          </div>
-          <div className={styles.footerCopy}>© {new Date().getFullYear()} {BRAND}.</div>
-        </footer>
+
       </div>
     </div>
   );
