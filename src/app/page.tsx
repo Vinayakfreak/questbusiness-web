@@ -48,18 +48,21 @@ export default function Home() {
             <QBLogo size={28} />
             <span>{BRAND}</span>
           </div>
-          <nav className={styles.navLinks}>
-            <a className={styles.navLink} href="#features">
-              Features
-            </a>
-            <a className={styles.navLink} href="#how">
-              How it works
-            </a>
-            <a className={styles.navLink} href="#preview">
-              Preview
-            </a>
-            <a className={styles.navLink} href="#pricing">
-              Pricing
+          <nav className={styles.menu}>
+            <Link className={styles.menuLink} href="/">
+              Home
+            </Link>
+            <Link className={styles.menuLink} href="/about">
+              About
+            </Link>
+            <Link className={styles.menuLink} href="/blog">
+              Blog
+            </Link>
+            <Link className={styles.menuLink} href="/contact">
+              Contact
+            </Link>
+            <a className={styles.menuCta} href="/login">
+              Book a call
             </a>
           </nav>
         </header>

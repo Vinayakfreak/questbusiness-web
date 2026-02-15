@@ -28,26 +28,43 @@
   letter-spacing: -0.2px;
 }
 
-.navLinks {
+.menu {
   display: flex;
-  gap: 14px;
+  align-items: center;
+  gap: 18px;
   flex-wrap: wrap;
   justify-content: flex-end;
 }
 
-.navLink {
+.menuLink {
   font-size: 13px;
-  padding: 6px 10px;
-  border: 1px solid transparent;
-  border-radius: 999px;
-  color: var(--muted);
-  transition: border-color 150ms ease, background 150ms ease, color 150ms ease;
+  color: rgba(247, 247, 251, 0.78);
+  padding: 6px 0;
+  border-bottom: 1px solid transparent;
+  transition: color 150ms ease, border-color 150ms ease;
 }
 
-.navLink:hover {
-  border-color: var(--border);
-  background: var(--panel);
-  color: var(--fg);
+.menuLink:hover {
+  color: rgba(247, 247, 251, 0.95);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+.menuCta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: linear-gradient(90deg, rgba(168, 85, 247, 0.95), rgba(59, 130, 246, 0.95));
+  color: #0b0f19;
+  font-weight: 900;
+  box-shadow: 0 16px 60px rgba(59, 130, 246, 0.16);
+}
+
+.menuCta:hover {
+  transform: translateY(-1px);
 }
 
 .hero {
