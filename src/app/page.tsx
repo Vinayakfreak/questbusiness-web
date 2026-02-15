@@ -61,7 +61,12 @@ export default function Home() {
             <Link className={styles.menuLink} href="/contact">
               Contact
             </Link>
-            <a className={styles.menuCta} href="/login">
+            <a
+              className={styles.menuCta}
+              href="https://cal.com/questbusiness/book-the-call"
+              target="_blank"
+              rel="noreferrer"
+            >
               Book a call
             </a>
           </nav>
