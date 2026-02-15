@@ -59,6 +59,9 @@ export default function Home() {
             <Link className={styles.menuLink} href="/blog">
               Blog
             </Link>
+            <Link className={styles.menuLink} href="/use-cases">
+              Use cases
+            </Link>
             <Link className={styles.menuLink} href="/contact">
               Contact
             </Link>
@@ -407,11 +410,12 @@ export default function Home() {
         <footer className={styles.footer}>
           <div className={styles.footerLinks}>
             <Link href="/about">About</Link>
-            <a href="#features">Features</a>
+            <Link href="/use-cases">Use cases</Link>
+            <Link href="/blog">Blog</Link>
             <a href="#pricing">Pricing</a>
-            <Link href="/">Privacy</Link>
-            <Link href="/">Terms</Link>
-            <a href="mailto:support@questbusiness.in">Contact</a>
+            <Link href="/privacy">Privacy</Link>
+            <Link href="/terms">Terms</Link>
+            <Link href="/contact">Contact</Link>
           </div>
           <div className={styles.footerCopy}>© {new Date().getFullYear()} {BRAND}.</div>
         </footer>
