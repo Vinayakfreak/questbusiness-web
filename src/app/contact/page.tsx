@@ -1,55 +1,91 @@
+"use client";
+
 import Link from "next/link";
+import { useState } from "react";
+import styles from "./contact.module.css";
 
 export default function ContactPage() {
+  const [busy, setBusy] = useState(false);
+  const [msg, setMsg] = useState<string>("");
+
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setMsg("");
+    setBusy(true);
+
+    // MVP: no backend email yet. We route to WhatsApp with a structured message.
+    const form = new FormData(e.currentTarget);
+    const first = String(form.get("first") || "").trim();
+    const last = String(form.get("last") || "").trim();
+    const email = String(form.get("email") || "").trim();
+    const phone = String(form.get("phone") || "").trim();
+    const message = String(form.get("message") || "").trim();
+
+    const text =
+      `Hi Quest Business,%0A%0A` +
+      `Name: ${encodeURIComponent(first + (last ? " " + last : ""))}%0A` +
+      `Email: ${encodeURIComponent(email)}%0A` +
+      `Phone: ${encodeURIComponent(phone)}%0A%0A` +
+      `Message:%0A${encodeURIComponent(message)}%0A`;
+
+    setTimeout(() => {
+      window.open(`https://wa.me/917007474846?text=${text}`, "_blank");
+      setBusy(false);
+      setMsg("Opened WhatsApp. Send the message to complete your request.");
+      e.currentTarget.reset();
+    }, 250);
+  }
+
   return (
-    <div style={{ maxWidth: 980, margin: "0 auto", padding: 20 }}>
-      <Link href="/" style={{ opacity: 0.85 }}>
-        ← Home
-      </Link>
-      <h1 style={{ marginTop: 12 }}>Contact</h1>
-      <p style={{ marginTop: 8, opacity: 0.85, lineHeight: 1.7, maxWidth: 720 }}>
-        For support and onboarding, message us on WhatsApp.
-      </p>
-      <div style={{ marginTop: 14, display: "flex", gap: 12, flexWrap: "wrap" }}>
-        <a
-          href="https://wa.me/917007474846?text=Hi%20Quest%20Business"
-          target="_blank"
-          rel="noreferrer"
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            justifyContent: "center",
-            height: 44,
-            padding: "0 16px",
-            borderRadius: 999,
-            background: "var(--fg)",
-            color: "var(--bg)",
-            fontWeight: 900,
-            border: 0,
-            textDecoration: "none",
-          }}
-        >
-          WhatsApp
-        </a>
-        <a
-          href="mailto:support@questbusiness.in"
-          style={{
-            display: "inline-flex",
-            alignItems: "center",
-            justifyContent: "center",
-            height: 44,
-            padding: "0 16px",
-            borderRadius: 999,
-            border: "1px solid var(--border)",
-            background: "transparent",
-            color: "var(--fg)",
-            fontWeight: 900,
-            textDecoration: "none",
-          }}
-        >
-          Email
-        </a>
-      </div>
+    <div className={styles.wrap}>
+      <header className={styles.top}>
+        <Link href="/" style={{ opacity: 0.85 }}>
+          ← Home
+        </Link>
+        <div className={styles.title}>Quest Business</div>
+      </header>
+
+      <section className={styles.hero}>
+        <div className={styles.pill}>Contact</div>
+        <h1 className={styles.h1}>Get in Touch with Us</h1>
+        <p className={styles.sub}>
+          Have questions or need AI solutions? Let us know by filling out the form, and we’ll be in touch.
+        </p>
+      </section>
+
+      <section className={styles.grid}>
+        <div className={styles.card}>
+          <div className={styles.infoRow}>
+            <div className={styles.info}>
+              <div className={styles.infoLabel}>Email</div>
+              <div className={styles.infoValue}>support@questbusiness.in</div>
+            </div>
+            <div className={styles.info}>
+              <div className={styles.infoLabel}>Phone</div>
+              <div className={styles.infoValue}>+91 7007474846</div>
+            </div>
+          </div>
+
+          {msg ? <div className={styles.note}>{msg}</div> : null}
+
+          <form onSubmit={onSubmit}>
+            <div className={styles.form}>
+              <input className={styles.input} name="first" placeholder="First Name" required />
+              <input className={styles.input} name="last" placeholder="Last Name" />
+              <input className={styles.input} name="email" placeholder="Email" type="email" required />
+              <input className={styles.input} name="phone" placeholder="Phone" required />
+              <textarea className={`${styles.textarea} ${styles.full}`} name="message" placeholder="Message" required />
+            </div>
+            <button className={styles.btn} type="submit" disabled={busy}>
+              {busy ? "Submitting…" : "Submit Form"}
+            </button>
+          </form>
+
+          <div className={styles.note}>
+            This will open WhatsApp with your details. Send the message and our team will respond.
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
