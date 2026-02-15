@@ -3,6 +3,7 @@ import styles from "./page.module.css";
 import { QBLogo } from "./components/QBLogo";
 import { Starfield } from "./components/Starfield";
 import { LoginModal } from "./components/LoginModal";
+import { HeroTypeSelector } from "./components/HeroTypeSelector";
 
 const BRAND = "Quest Business";
 
@@ -92,9 +93,18 @@ export default function Home() {
                 <Link className={styles.btnPrimary} href="/login">
                   Start Free 7-Day Growth Trial
                 </Link>
-                <a className={styles.btnSecondary} href="#preview">
+                <Link className={styles.btnSecondary} href="/demo">
                   View Platform Preview
-                </a>
+                </Link>
+              </div>
+
+              <HeroTypeSelector />
+
+              <div className={styles.trustRow}>
+                <div className={styles.trustItem}>Daily tracking</div>
+                <div className={styles.trustItem}>Weekly review</div>
+                <div className={styles.trustItem}>Actionable AI</div>
+                <div className={styles.trustItem}>Low friction setup</div>
               </div>
             </div>
 
@@ -161,6 +171,54 @@ export default function Home() {
           </div>
         </section>
 
+        {/* 7-DAY TRIAL */}
+        <section className={styles.section} id="trial">
+          <div className={styles.sectionHead}>
+            <h2 className={styles.h2}>What you get in the 7-day trial</h2>
+            <p className={styles.p}>
+              A simple sequence that turns “trying a tool” into a working operating rhythm.
+            </p>
+          </div>
+
+          <div className={styles.timeline}>
+            <div className={styles.timeCard}>
+              <div className={styles.timeDay}>Day 1</div>
+              <div className={styles.timeTitle}>Setup + baseline</div>
+              <div className={styles.timeBody}>Define your offer, audience, and current numbers. Start the daily log.</div>
+            </div>
+            <div className={styles.timeCard}>
+              <div className={styles.timeDay}>Day 2</div>
+              <div className={styles.timeTitle}>Content structure</div>
+              <div className={styles.timeBody}>Create 3 content pillars + a posting plan you can actually maintain.</div>
+            </div>
+            <div className={styles.timeCard}>
+              <div className={styles.timeDay}>Day 3</div>
+              <div className={styles.timeTitle}>Offer clarity</div>
+              <div className={styles.timeBody}>Tighten your promise and pricing so customers understand quickly.</div>
+            </div>
+            <div className={styles.timeCard}>
+              <div className={styles.timeDay}>Day 4</div>
+              <div className={styles.timeTitle}>Conversion fixes</div>
+              <div className={styles.timeBody}>Simplify CTA, reduce friction, and improve the landing message.</div>
+            </div>
+            <div className={styles.timeCard}>
+              <div className={styles.timeDay}>Day 5</div>
+              <div className={styles.timeTitle}>Lead follow-up system</div>
+              <div className={styles.timeBody}>Build a repeatable follow-up script and tracking workflow.</div>
+            </div>
+            <div className={styles.timeCard}>
+              <div className={styles.timeDay}>Day 6</div>
+              <div className={styles.timeTitle}>Weekly review</div>
+              <div className={styles.timeBody}>Stop/Start/Continue review based on your week’s signals.</div>
+            </div>
+            <div className={styles.timeCard}>
+              <div className={styles.timeDay}>Day 7</div>
+              <div className={styles.timeTitle}>Next 30-day plan</div>
+              <div className={styles.timeBody}>A clear plan for the next month with priorities and targets.</div>
+            </div>
+          </div>
+        </section>
+
         {/* HOW IT WORKS */}
         <section className={styles.section} id="how">
           <div className={styles.sectionHead}>
@@ -223,6 +281,36 @@ export default function Home() {
           </div>
         </section>
 
+        {/* PROOF */}
+        <section className={styles.section} id="proof">
+          <div className={styles.sectionHead}>
+            <h2 className={styles.h2}>Proof beats promises.</h2>
+            <p className={styles.p}>
+              Early results will be published here as we onboard more businesses.
+            </p>
+          </div>
+          <div className={styles.testimonials}>
+            <div className={styles.quote}>
+              <div className={styles.quoteText}>
+                “The daily checklist removed decision fatigue. We became consistent again.”
+              </div>
+              <div className={styles.quoteMeta}>— Founder, D2C brand (beta)</div>
+            </div>
+            <div className={styles.quote}>
+              <div className={styles.quoteText}>
+                “Weekly review made it obvious what to stop doing. The system feels calm.”
+              </div>
+              <div className={styles.quoteMeta}>— Service business owner (beta)</div>
+            </div>
+            <div className={styles.quote}>
+              <div className={styles.quoteText}>
+                “We improved conversion by simplifying the offer and tightening the CTA.”
+              </div>
+              <div className={styles.quoteMeta}>— Instagram seller (beta)</div>
+            </div>
+          </div>
+        </section>
+
         {/* WHO IT’S FOR */}
         <section className={styles.section} id="for">
           <div className={styles.sectionHead}>
@@ -256,7 +344,12 @@ export default function Home() {
             <div className={styles.priceCard}>
               <div className={styles.priceTitle}>Starter</div>
               <div className={styles.priceValue}>Free</div>
-              <div className={styles.priceNote}>Basic access</div>
+              <div className={styles.priceNote}>For getting started</div>
+              <ul className={styles.priceUl}>
+                <li>Daily log (basic)</li>
+                <li>Starter playbooks</li>
+                <li>Community support</li>
+              </ul>
               <Link className={styles.btnSecondary} href="/login">
                 Start
               </Link>
@@ -265,7 +358,12 @@ export default function Home() {
             <div className={styles.priceCardFeatured}>
               <div className={styles.priceTitle}>Growth</div>
               <div className={styles.priceValue}>₹1499 / month</div>
-              <div className={styles.priceNote}>Highlighted plan</div>
+              <div className={styles.priceNote}>Best for most businesses</div>
+              <ul className={styles.priceUl}>
+                <li>Daily AI recommendations</li>
+                <li>Conversion + offer improvements</li>
+                <li>Weekly Stop/Start/Continue review</li>
+              </ul>
               <Link className={styles.btnPrimary} href="/login">
                 Begin Structured Growth
               </Link>
@@ -274,10 +372,15 @@ export default function Home() {
             <div className={styles.priceCard}>
               <div className={styles.priceTitle}>Scale</div>
               <div className={styles.priceValue}>₹3499 / month</div>
-              <div className={styles.priceNote}>Advanced workflows</div>
-              <Link className={styles.btnSecondary} href="/login">
+              <div className={styles.priceNote}>For teams & advanced workflows</div>
+              <ul className={styles.priceUl}>
+                <li>Advanced tracking</li>
+                <li>Templates + automation</li>
+                <li>Priority support</li>
+              </ul>
+              <a className={styles.btnSecondary} href="https://cal.com/questbusiness/book-the-call" target="_blank" rel="noreferrer">
                 Talk to us
-              </Link>
+              </a>
             </div>
           </div>
         </section>
@@ -293,9 +396,9 @@ export default function Home() {
               <Link className={styles.btnPrimary} href="/login">
                 Begin Structured Growth
               </Link>
-              <a className={styles.btnSecondary} href="#preview">
+              <Link className={styles.btnSecondary} href="/demo">
                 View preview
-              </a>
+              </Link>
             </div>
           </div>
         </section>

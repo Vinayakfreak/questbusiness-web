@@ -136,6 +136,22 @@
   justify-content: flex-end;
 }
 
+.trustRow {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  color: var(--muted);
+}
+
+.trustItem {
+  font-size: 12px;
+  padding: 6px 10px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.16);
+}
+
 .kicker {
   display: inline-flex;
   align-items: center;
@@ -278,6 +294,38 @@
   line-height: 1.7;
 }
 
+.timeline {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.timeCard {
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 14px;
+}
+
+.timeDay {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 900;
+}
+
+.timeTitle {
+  margin-top: 6px;
+  font-weight: 900;
+  letter-spacing: -0.2px;
+}
+
+.timeBody {
+  margin-top: 8px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
 .steps {
   margin-top: 16px;
   display: grid;
@@ -334,6 +382,13 @@
   gap: 12px;
 }
 
+.priceUl {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
 .priceCard,
 .priceCardFeatured {
   border: 1px solid var(--border);
@@ -364,6 +419,30 @@
 .priceNote {
   color: var(--muted);
   font-size: 13px;
+}
+
+.testimonials {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.quote {
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 16px;
+}
+
+.quoteText {
+  line-height: 1.75;
+}
+
+.quoteMeta {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 12px;
 }
 
 .final {
@@ -541,6 +620,12 @@
     display: none;
   }
   .bullets {
+    grid-template-columns: 1fr;
+  }
+  .timeline {
+    grid-template-columns: 1fr;
+  }
+  .testimonials {
     grid-template-columns: 1fr;
   }
   .h1 {
