@@ -54,7 +54,7 @@ export function SiteFooter() {
         <div>
           <div className={styles.colTitle}>Socials</div>
           <div className={styles.links}>
-            <a href="https://www.instagram.com/" target="_blank" rel="noreferrer">
+            <a href="https://www.instagram.com/questbusiness.in/" target="_blank" rel="noreferrer">
               Instagram
             </a>
             <a href="https://www.facebook.com/" target="_blank" rel="noreferrer">
