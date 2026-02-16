@@ -13,7 +13,6 @@ export default function ContactPage() {
     setMsg("");
     setBusy(true);
 
-    // MVP: no backend email yet. We route to WhatsApp with a structured message.
     const form = new FormData(e.currentTarget);
     const first = String(form.get("first") || "").trim();
     const last = String(form.get("last") || "").trim();
@@ -21,19 +20,36 @@ export default function ContactPage() {
     const phone = String(form.get("phone") || "").trim();
     const message = String(form.get("message") || "").trim();
 
-    const text =
-      `Hi Quest Business,%0A%0A` +
-      `Name: ${encodeURIComponent(first + (last ? " " + last : ""))}%0A` +
-      `Email: ${encodeURIComponent(email)}%0A` +
-      `Phone: ${encodeURIComponent(phone)}%0A%0A` +
-      `Message:%0A${encodeURIComponent(message)}%0A`;
+    try {
+      const r = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ first, last, email, phone, message }),
+      });
+      const j = await r.json().catch(() => ({}));
 
-    setTimeout(() => {
+      if (r.ok) {
+        setMsg("Submitted. We will contact you shortly.");
+        e.currentTarget.reset();
+        return;
+      }
+
+      // Fallback: open WhatsApp if email isn't configured
+      const text =
+        `Hi Quest Business,%0A%0A` +
+        `Name: ${encodeURIComponent(first + (last ? " " + last : ""))}%0A` +
+        `Email: ${encodeURIComponent(email)}%0A` +
+        `Phone: ${encodeURIComponent(phone)}%0A%0A` +
+        `Message:%0A${encodeURIComponent(message)}%0A`;
+
       window.open(`https://wa.me/917007474846?text=${text}`, "_blank");
-      setBusy(false);
-      setMsg("Opened WhatsApp. Send the message to complete your request.");
+      setMsg(j?.error ? `${j.error} Opened WhatsApp as fallback.` : "Opened WhatsApp as fallback.");
       e.currentTarget.reset();
-    }, 250);
+    } catch {
+      setMsg("Failed to submit. Please try again.");
+    } finally {
+      setBusy(false);
+    }
   }
 
   return (
@@ -82,7 +98,7 @@ export default function ContactPage() {
           </form>
 
           <div className={styles.note}>
-            This will open WhatsApp with your details. Send the message and our team will respond.
+            This form submits to our support inbox. If email is not configured, it will open WhatsApp as a fallback.
           </div>
         </div>
       </section>
