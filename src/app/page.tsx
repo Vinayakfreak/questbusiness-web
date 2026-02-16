@@ -340,9 +340,10 @@ export default function Home() {
         <section className={styles.section} id="pricing">
           <div className={styles.sectionHead}>
             <h2 className={styles.h2}>Pricing</h2>
-            <p className={styles.p}>Simple plans. A clear upgrade path.</p>
+            <p className={styles.p}>SaaS plans + optional done-for-you setup.</p>
           </div>
 
+          {/* SaaS cards */}
           <div className={styles.pricing}>
             <div className={styles.priceCard}>
               <div className={styles.priceTitle}>Starter</div>
@@ -381,9 +382,91 @@ export default function Home() {
                 <li>Templates + automation</li>
                 <li>Priority support</li>
               </ul>
-              <a className={styles.btnSecondary} href="https://cal.com/questbusiness/book-the-call" target="_blank" rel="noreferrer">
+              <a
+                className={styles.btnSecondary}
+                href="https://cal.com/questbusiness/book-the-call"
+                target="_blank"
+                rel="noreferrer"
+              >
                 Talk to us
               </a>
+            </div>
+          </div>
+
+          {/* Done-for-you */}
+          <div className={styles.sectionFull} style={{ marginTop: 12 }}>
+            <div className={styles.kicker}>Done-for-you</div>
+            <h3 style={{ marginTop: 10, fontSize: 20, letterSpacing: -0.4 }}>
+              Customised Setup Pricing (₹3,500 – ₹80,000)
+            </h3>
+            <p style={{ marginTop: 8, opacity: 0.85, lineHeight: 1.8, maxWidth: 860 }}>
+              One-time setup fees. Recurring tools (domain/hosting/credits/API usage) may be billed separately at actual
+              cost.
+            </p>
+
+            <div className={styles.pricing} style={{ marginTop: 12 }}>
+              <div className={styles.priceCard}>
+                <div className={styles.priceTitle}>Launch Setup</div>
+                <div className={styles.priceValue}>₹3,500 – ₹12,000</div>
+                <div className={styles.priceNote}>Early businesses</div>
+                <ul className={styles.priceUl}>
+                  <li>Template website / 1-page setup</li>
+                  <li>Basic tracking + assistant setup</li>
+                  <li>WhatsApp inquiry + lead capture</li>
+                </ul>
+                <a
+                  className={styles.btnSecondary}
+                  href="https://cal.com/questbusiness/book-the-call"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Book a call
+                </a>
+              </div>
+
+              <div className={styles.priceCard}>
+                <div className={styles.priceTitle}>Growth System Setup</div>
+                <div className={styles.priceValue}>₹15,000 – ₹35,000</div>
+                <div className={styles.priceNote}>Growing businesses</div>
+                <ul className={styles.priceUl}>
+                  <li>Premium website setup</li>
+                  <li>CRM + follow-up workflow</li>
+                  <li>WhatsApp automation + AI setup</li>
+                </ul>
+                <a
+                  className={styles.btnSecondary}
+                  href="https://cal.com/questbusiness/book-the-call"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Book a call
+                </a>
+              </div>
+
+              <div className={styles.priceCard}>
+                <div className={styles.priceTitle}>Business OS Transformation</div>
+                <div className={styles.priceValue}>₹50,000 – ₹80,000</div>
+                <div className={styles.priceNote}>Premium clients</div>
+                <ul className={styles.priceUl}>
+                  <li>Custom website + branding</li>
+                  <li>Full CRM + automation + calling flow</li>
+                  <li>Audit + strategy + training</li>
+                </ul>
+                <a
+                  className={styles.btnSecondary}
+                  href="https://cal.com/questbusiness/book-the-call"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Book a call
+                </a>
+              </div>
+            </div>
+
+            <div style={{ marginTop: 12 }}>
+              <Link className={styles.btnPrimary} href="/pricing">
+                View full pricing →
+              </Link>
             </div>
           </div>
         </section>
