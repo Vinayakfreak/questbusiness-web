@@ -66,7 +66,7 @@ export default function ContactPage() {
           <div className={styles.infoRow}>
             <div className={styles.info}>
               <div className={styles.infoLabel}>Email</div>
-              <div className={styles.infoValue}>support@questbusiness.in</div>
+              <div className={styles.infoValue}>vrk@questbusiness.in</div>
             </div>
             <div className={styles.info}>
               <div className={styles.infoLabel}>Response time</div>

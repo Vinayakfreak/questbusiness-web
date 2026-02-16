@@ -72,7 +72,7 @@ export function SiteFooter() {
 
       <div className={styles.bottom}>
         <div>© {new Date().getFullYear()} Quest Business.</div>
-        <div>support@questbusiness.in</div>
+        <div>vrk@questbusiness.in</div>
       </div>
     </footer>
   );

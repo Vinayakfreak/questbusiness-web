@@ -35,7 +35,7 @@ export default function PrivacyPage() {
 
         <h2 style={{ marginTop: 16, fontSize: 18, letterSpacing: -0.2 }}>Contact</h2>
         <p style={{ marginTop: 10, opacity: 0.85, lineHeight: 1.9 }}>
-          Email: support@questbusiness.in
+          Email: vrk@questbusiness.in
         </p>
       </div>
     </div>
