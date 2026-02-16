@@ -1,10 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import styles from "./contact.module.css";
 
 export default function ContactPage() {
+  const router = useRouter();
   const [busy, setBusy] = useState(false);
   const [msg, setMsg] = useState<string>("");
 
@@ -29,22 +31,12 @@ export default function ContactPage() {
       const j = await r.json().catch(() => ({}));
 
       if (r.ok) {
-        setMsg("Submitted. We will contact you shortly.");
         e.currentTarget.reset();
+        router.push("/contact/thanks");
         return;
       }
 
-      // Fallback: open WhatsApp if email isn't configured
-      const text =
-        `Hi Quest Business,%0A%0A` +
-        `Name: ${encodeURIComponent(first + (last ? " " + last : ""))}%0A` +
-        `Email: ${encodeURIComponent(email)}%0A` +
-        `Phone: ${encodeURIComponent(phone)}%0A%0A` +
-        `Message:%0A${encodeURIComponent(message)}%0A`;
-
-      window.open(`https://wa.me/917007474846?text=${text}`, "_blank");
-      setMsg(j?.error ? `${j.error} Opened WhatsApp as fallback.` : "Opened WhatsApp as fallback.");
-      e.currentTarget.reset();
+      setMsg(j?.error || "Failed to submit. Please try again.");
     } catch {
       setMsg("Failed to submit. Please try again.");
     } finally {
@@ -77,8 +69,8 @@ export default function ContactPage() {
               <div className={styles.infoValue}>support@questbusiness.in</div>
             </div>
             <div className={styles.info}>
-              <div className={styles.infoLabel}>Phone</div>
-              <div className={styles.infoValue}>+91 7007474846</div>
+              <div className={styles.infoLabel}>Response time</div>
+              <div className={styles.infoValue}>Within 24 hours</div>
             </div>
           </div>
 
@@ -98,7 +90,7 @@ export default function ContactPage() {
           </form>
 
           <div className={styles.note}>
-            This form submits to our support inbox. If email is not configured, it will open WhatsApp as a fallback.
+            This form submits to our support inbox.
           </div>
         </div>
       </section>
