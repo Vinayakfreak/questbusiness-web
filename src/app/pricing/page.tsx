@@ -1,157 +1,136 @@
 import Link from "next/link";
-
-const BRAND = "Quest Business";
-
-function Card({
-  title,
-  price,
-  subtitle,
-  items,
-  cta,
-  highlight,
-}: {
-  title: string;
-  price: string;
-  subtitle: string;
-  items: string[];
-  cta: string;
-  highlight?: boolean;
-}) {
-  return (
-    <div
-      style={{
-        border: `1px solid var(--border)`,
-        background: highlight ? "var(--panel)" : "var(--panel2)",
-        borderRadius: 18,
-        padding: 16,
-      }}
-    >
-      <div style={{ display: "flex", justifyContent: "space-between", gap: 10, alignItems: "baseline" }}>
-        <h2 style={{ margin: 0, fontSize: 18 }}>{title}</h2>
-        {highlight ? (
-          <span
-            style={{
-              fontSize: 12,
-              padding: "4px 10px",
-              borderRadius: 999,
-              border: "1px solid var(--border)",
-              background: "var(--panel)",
-              color: "var(--muted)",
-            }}
-          >
-            Recommended
-          </span>
-        ) : null}
-      </div>
-      <div style={{ marginTop: 10, fontSize: 28, fontWeight: 800 }}>{price}</div>
-      <div style={{ marginTop: 6, opacity: 0.8 }}>{subtitle}</div>
-
-      <ul style={{ marginTop: 14, paddingLeft: 18, opacity: 0.9, lineHeight: 1.8 }}>
-        {items.map((x) => (
-          <li key={x}>{x}</li>
-        ))}
-      </ul>
-
-      <Link
-        href="/onboard"
-        style={{
-          display: "inline-flex",
-          alignItems: "center",
-          justifyContent: "center",
-          height: 44,
-          padding: "0 16px",
-          borderRadius: 999,
-          background: "var(--fg)",
-          color: "var(--bg)",
-          fontWeight: 800,
-          marginTop: 10,
-        }}
-      >
-        {cta}
-      </Link>
-    </div>
-  );
-}
+import styles from "./pricing.module.css";
 
 export default function PricingPage() {
   return (
-    <div style={{ maxWidth: 1050, margin: "0 auto", padding: "28px 18px 60px" }}>
-      <header style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "center" }}>
-        <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
-          <Link href="/" style={{ fontWeight: 800 }}>
-            {BRAND}
-          </Link>
-          <span style={{ opacity: 0.7, fontSize: 12 }}>Pricing</span>
-        </div>
-        <Link href="/about" style={{ opacity: 0.8 }}>
-          Learn more
+    <div className={styles.wrap}>
+      <header className={styles.top}>
+        <Link href="/" style={{ opacity: 0.85 }}>
+          ← Home
         </Link>
+        <div className={styles.title}>Pricing</div>
       </header>
 
-      <h1 style={{ marginTop: 18, fontSize: 40, letterSpacing: -0.8 }}>Plans</h1>
-      <p style={{ marginTop: 10, opacity: 0.85, lineHeight: 1.7, maxWidth: 820 }}>
-        Start free. Upgrade when you want advanced themes, full coaching, and daily targets. We do not use other brand names on
-        this website — everything is provided inside {BRAND}.
-      </p>
-
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 12, marginTop: 16 }}>
-        <Card
-          title="Free"
-          price="₹0/mo"
-          subtitle="Try the platform"
-          cta="Start Free"
-          items={[
-            "Access website platform",
-            "Basic store page",
-            "Limited templates",
-            "No AI website builder",
-            "No advanced AI coach",
-          ]}
-        />
-
-        <Card
-          title="Basic"
-          price="₹699/mo"
-          subtitle="Store setup + limited assistant"
-          cta="Get Basic"
-          highlight
-          items={[
-            "Email OTP login (dashboard)",
-            "Online store showcase",
-            "Connect domain (storefront)",
-            "Limited assistant (templates & actions)",
-            "No online marketing in this plan",
-            "Commission: 5% on online sales (after tracking is enabled)",
-          ]}
-        />
-
-        <Card
-          title="Grow"
-          price="₹3,599/mo"
-          subtitle="Full access: website + coaching + courses"
-          cta="Get Grow"
-          items={[
-            "Everything in Basic",
-            "Premium themes & templates",
-            "Full AI access",
-            "Daily targets + daily tasks",
-            "Daily market analysis suggestions",
-            "Courses (A + B roadmap)",
-          ]}
-        />
-      </div>
-
-      <div style={{ marginTop: 18, border: "1px solid var(--border)", borderRadius: 18, padding: 16, background: "var(--panel)" }}>
-        <h2 style={{ margin: 0, fontSize: 18 }}>Custom / Done‑For‑You</h2>
-        <p style={{ marginTop: 8, opacity: 0.85, lineHeight: 1.7 }}>
-          Need full modifications, custom design, and setup handled by us? Custom plans start from <b>₹30,000+</b>.
+      <section className={styles.hero}>
+        <div className={styles.pill}>Plans</div>
+        <h1 className={styles.h1}>Simple plans. Clear upgrades.</h1>
+        <p className={styles.sub}>
+          Start free. Upgrade when you want daily AI recommendations, structured reviews, and conversion improvements.
         </p>
-        <p style={{ marginTop: 6, opacity: 0.7 }}>
-          Optional add‑on: extra editing / adding features can be offered as a small subscription (example: ₹29/month) or per‑task.
-        </p>
-      </div>
+      </section>
 
-      <div style={{ marginTop: 18, opacity: 0.7, fontSize: 13 }}>
+      {/* SaaS plans */}
+      <section className={styles.grid}>
+        <div className={styles.card}>
+          <div className={styles.row}>
+            <div style={{ fontWeight: 900 }}>Starter</div>
+          </div>
+          <div className={styles.price}>Free</div>
+          <div className={styles.note}>For getting started</div>
+          <ul className={styles.ul}>
+            <li>Daily log (basic)</li>
+            <li>Starter playbooks</li>
+            <li>Community support</li>
+          </ul>
+          <Link className={styles.btn} href="/login">
+            Start
+          </Link>
+        </div>
+
+        <div className={styles.cardFeatured}>
+          <div className={styles.row}>
+            <div style={{ fontWeight: 900 }}>Growth</div>
+            <div className={styles.badge}>Recommended</div>
+          </div>
+          <div className={styles.price}>₹1499 / month</div>
+          <div className={styles.note}>Best for most businesses</div>
+          <ul className={styles.ul}>
+            <li>Daily AI recommendations</li>
+            <li>Conversion + offer improvements</li>
+            <li>Weekly Stop/Start/Continue review</li>
+          </ul>
+          <Link className={`${styles.btn} ${styles.btnPrimary}`} href="/login">
+            Begin Structured Growth
+          </Link>
+        </div>
+
+        <div className={styles.card}>
+          <div className={styles.row}>
+            <div style={{ fontWeight: 900 }}>Scale</div>
+          </div>
+          <div className={styles.price}>₹3499 / month</div>
+          <div className={styles.note}>For teams & advanced workflows</div>
+          <ul className={styles.ul}>
+            <li>Advanced tracking</li>
+            <li>Templates + automation</li>
+            <li>Priority support</li>
+          </ul>
+          <a className={styles.btn} href="https://cal.com/questbusiness/book-the-call" target="_blank" rel="noreferrer">
+            Talk to us
+          </a>
+        </div>
+      </section>
+
+      {/* Done-for-you */}
+      <section className={styles.section}>
+        <div className={styles.kicker}>Done-for-you</div>
+        <h2 className={styles.h2} style={{ marginTop: 10 }}>
+          Customised Setup Pricing (₹3,500 – ₹80,000)
+        </h2>
+        <p className={styles.sub} style={{ marginTop: 8 }}>
+          For founders who want the complete setup handled end-to-end. One-time setup fees; recurring tools (domain,
+          hosting, calling credits, API usage) may be billed separately at actual cost.
+        </p>
+
+        <div className={styles.customGrid}>
+          <div className={styles.customCard}>
+            <div style={{ fontWeight: 900 }}>Launch Setup</div>
+            <div className={styles.price}>₹3,500 – ₹12,000</div>
+            <div className={styles.note}>Early businesses</div>
+            <ul className={styles.ul}>
+              <li>Template website / 1-page setup</li>
+              <li>Basic tracking + assistant setup</li>
+              <li>WhatsApp inquiry + lead capture</li>
+              <li>Basic training</li>
+            </ul>
+            <a className={styles.btn} href="https://cal.com/questbusiness/book-the-call" target="_blank" rel="noreferrer">
+              Book a call
+            </a>
+          </div>
+
+          <div className={styles.customCard}>
+            <div style={{ fontWeight: 900 }}>Growth System Setup</div>
+            <div className={styles.price}>₹15,000 – ₹35,000</div>
+            <div className={styles.note}>Growing businesses</div>
+            <ul className={styles.ul}>
+              <li>Premium website setup</li>
+              <li>CRM pipeline + follow-up workflow</li>
+              <li>WhatsApp automation setup</li>
+              <li>Advanced AI assistant setup</li>
+            </ul>
+            <a className={styles.btn} href="https://cal.com/questbusiness/book-the-call" target="_blank" rel="noreferrer">
+              Book a call
+            </a>
+          </div>
+
+          <div className={styles.customCard}>
+            <div style={{ fontWeight: 900 }}>Business OS Transformation</div>
+            <div className={styles.price}>₹50,000 – ₹80,000</div>
+            <div className={styles.note}>Premium clients</div>
+            <ul className={styles.ul}>
+              <li>Custom website + branding</li>
+              <li>Full CRM + automation</li>
+              <li>Calling flow + scripts</li>
+              <li>Audit + strategy + training</li>
+            </ul>
+            <a className={styles.btn} href="https://cal.com/questbusiness/book-the-call" target="_blank" rel="noreferrer">
+              Book a call
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <div style={{ marginTop: 16, opacity: 0.7, fontSize: 13 }}>
         Note: Shipping/logistics is handled by the seller (out of scope for MVP).
       </div>
     </div>
